@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h1>Athletes</h1>
+</div>
+<div ng-repeat="athlete in athletes">
+  <label>Name: </label> {{athlete.name}}
+  <label>Age: </label> {{athlete.age}}
+  <button type="button" ng-click="delete(athlete)">{{buttonDelete}}</button>
+</div>
+
+
+<div>
+    ------------------------------------------
+</div>
+<div>
+  <span>New Athlete</span>
+</div>
+<div>
+  <form ng-submit="save()">
+    <label>Name: </label> <input type="text" ng-trim="true" ng-model="athlete.name" required/>
+    <label>Age: </label> <input type="number" min="3" max="120" ng-model="athlete.age" required/>
+    <button type="submit">{{buttonSave}}</button>
+  </form>
+</div>

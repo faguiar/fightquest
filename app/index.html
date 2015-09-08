@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fight Quest</title>  
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-theme.min.css" />
+  <link rel="stylesheet" href="/app/css/theme.css" />
+  <script src="/node_modules/requirejs/require.js"></script>
+  <script type="text/javascript">
+  require.config({
+    baseUrl: '.',
+    paths: {
+      angular: '/node_modules/angular/angular',
+      angularRoute: '/node_modules/angular-route/angular-route',
+      jquery: '/node_modules/jquery/dist/jquery.min',
+      bootstrap: '/node_modules/bootstrap/dist/js/bootstrap.min'      
+    },
+    shim:{
+      'angular' : {'exports' : 'angular'},
+      'angularRoute' : ['angular'],      
+      'bootstrap': ['jquery'],                    
+    },
+    priority: [
+      'angular'
+    ]
+  });
+
+  require(['angular', 'bootstrap', 'app'], 
+    function (angular, bootstrap, app){
+      var $html = angular.element(document.getElementsByTagName('html')[0]);
+      angular.element().ready(function() {
+        // bootstrap the app manually
+        angular.bootstrap(document, ['fightQuestApp']);
+      });
+    });  
+  </script>
+</head>
+<body role="document" ng-cloak>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Fight Quest</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="#/athletes/">Athletes</a>
+            </li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </nav>
+
+
+  <div class="container theme-showcase" role="main" ng-view> 
+    
+  </div>
+</body>
+</html>
